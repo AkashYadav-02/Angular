@@ -1,0 +1,10 @@
+<div class="container text-center mt-4">
+  <h1>Movie App</h1>
+
+</div>
+<app-child (outEvent)="receiveChildData($event)"></app-child>
+<div class="container text-center mt-4">
+  <h1>Movie-list</h1>
+
+</div>
+<app-movie [movieslist]="movieData"> </app-movie>

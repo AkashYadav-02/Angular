@@ -1,0 +1,100 @@
+<h1>App component</h1>
+<hr />
+<div *ngIf="show; else elseBlock">Content shown when the condition is true</div>
+<ng-template #elseBlock>Content shown when the condition is false</ng-template>
+<hr />
+<div *ngIf="show; then IfBlock; else ElseBlock"></div>
+<ng-template #IfBlock>
+  New Content shown when the condition is true</ng-template
+>
+<ng-template #ElseBlock>
+  New Content shown when the condition is false</ng-template
+>
+<hr />
+
+<ng-template [ngIf]="color === 'blue'">
+  <h1 style="color: blue">text in blue</h1>
+</ng-template>
+
+<h1 *ngIf="color == 'blue'" style="color: blue">Text in blue</h1>
+
+<div [ngSwitch]="color">
+  <h1 *ngSwitchCase="'blue'"  style="color: blue;">Text in blue</h1>
+  <h1 *ngSwitchCase="'red'"  style="color: red;">Text in red</h1>
+  <h1 *ngSwitchCase="'black'"  style="color: black;">Text in black</h1>
+  <h1 *ngSwitchCase="'orange'"  style="color: orange;">Text in orange</h1>
+  <h1 *ngSwitchDefault style="color: rgb(65, 81, 95);"> Defalut color</h1>
+</div>
+
+<div>
+  <li *ngFor="let item of player">
+    {{ item }}
+  </li>
+</div>
+<table class="table table-dark table-bordered">
+  <thead >
+    <tr  >
+      <th scope="col" >ID</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let student of students">
+      <th scope="row">{{ student.id }}</th>
+      <td scope="row">{{ student.firstName }}</td>
+      <td scope="row">{{ student.lastName }}</td>
+      <td scope="row">{{ student.email }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- 
+
+<div class="container text-center mt-4">
+  <h2>Todo App</h2>
+
+  <div class="d-flex justify-content-between mb-3">
+    <input type="text" [(ngModel)]="newTodo" class="form-control" placeholder="Add todo" />
+    <button class="btn btn-success" (click)="addTodo()">Add</button>
+  </div>
+
+  <ul class="list-group">
+    <li *ngFor="let todoItem of todos; let i = index">
+      {{ todoItem }}
+      <button (click)="deleteTodo(i)">Delete</button>
+   
+      <button class="btn btn-danger btn-sm float-end  text-center" (click)="deleteTodo(i)">Delete</button>
+    </li>
+  </ul>
+</div> -->
+
+<div class="container text-center mt-4">
+  <h2 class="text-primary">Todo App</h2>
+
+  <div class="d-flex justify-content-between mb-3">
+    <input [(ngModel)]="inputvalue" class="form-control text-center" placeholder="Add todo" />
+    <button class="btn btn-success" [disabled]="!inputvalue" (click)="addTodo()">Add</button>
+  </div>
+
+  <!-- Todo List -->
+  <h3 class="text-success">Todo List</h3>
+  <ul class="list-group">
+    <li *ngFor="let todo of todos; let i = index" class="list-group-item text-start">
+      <span>{{ todo }}</span>
+      <button class="btn btn-danger btn-sm float-end" (click)="deleteTodo(i)">Delete</button>
+      <button class="btn btn-success btn-sm float-end" (click)="completeTodo(i)">Complete</button>
+    </li>
+  </ul>
+
+  <!-- Completed List -->
+  <h3 class="text-danger">Completed List</h3>
+  <ul class="list-group">
+    <li *ngFor="let completed of completedTodos; let i = index" class="list-group-item text-start">
+      <span>{{ completed }}</span>
+      <button class="btn btn-danger btn-sm float-end" (click)="deleteCompleted(i)">Delete</button>
+    </li>
+  </ul>
+</div>
+

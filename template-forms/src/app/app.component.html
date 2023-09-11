@@ -1,0 +1,10 @@
+
+
+<app-student (outEvent)="getValue($event)"></app-student>
+
+<div *ngFor="let x of listt">
+  <h2>Name: {{x.name}}</h2>
+  <h2>Email: {{x.email}}</h2>
+  <h2>Degree: {{x.degree}}</h2>
+  <br>
+</div>

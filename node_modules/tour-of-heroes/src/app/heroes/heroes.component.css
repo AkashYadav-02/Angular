@@ -1,0 +1,8 @@
+.heroes button{
+    width: 200px;
+}
+
+.heroes button.selectedBtn {
+    background-color: black;
+    color: white;
+  }

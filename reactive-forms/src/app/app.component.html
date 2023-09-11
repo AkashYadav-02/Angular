@@ -1,0 +1,105 @@
+<div class="container"> 
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()"> 
+  
+   <div class="mb-3"> 
+    <label for="exampleInputusername" class="form-label">Username</label> 
+    <input type="text"   class="form-control" id="exampleInputusername" 
+    formControlName="username"
+    > 
+    <div class="form-text" *ngIf="userForm.get('username')?.touched">
+      <span *ngIf="userForm.get('username')?.hasError('required')">Username is required</span>
+      <span *ngIf="userForm.get('username')?.hasError('minlength')">Username must be at least 4 characters</span>
+      <span *ngIf="userForm.get('username')?.hasError('maxlength')">Username has at most 6 characters</span>
+      <span *ngIf="userForm.get('username')?.hasError('invalidNames')">Username is invalidNames</span>
+    
+    
+    </div>
+    
+  </div> 
+  <div class="mb-3"> 
+    <label for="exampleInputEmail1" class="form-label">Email address</label> 
+    <input type="email"   formControlName="email" class="form-control" id="exampleInputEmail1"  
+    required 
+     > 
+     <span class="form-text" *ngIf="userForm.get('email')?.invalid&& userForm.get('email')?.touched">Email Not valid</span>
+  </div>
+  
+  <div class="mb3"> 
+    <select class="form-select" formControlName="number"> 
+      <option value="">Select option</option>
+      <option value="1">One</option> 
+      <option value="2">Two</option> 
+      <option value="3">Three</option> 
+    </select> 
+    
+    <span class="form-text" *ngIf="userForm.get('number')?.invalid && userForm.get('number')?.touched">Choose a valid option</span>
+
+  </div>
+  
+   
+
+    <div class="radio mt-3" *ngFor=" let gender of genders">
+      <label for=""> 
+        <input type="radio"   [value]="gender"
+        formControlName="radio">
+        {{gender}}
+      </label>
+
+    </div>
+    
+    <div class="mb3 " >
+  
+    <button type="submit" [disabled]="!userForm.valid" class="btn btn-primary mt-4 ">Submit</button>
+ 
+    
+    <button type="reset" (click)="onClickReset()" class="btn btn-danger mt-4 ">Reset</button>
+  </div>
+ 
+</form>
+</div>
+
+<!-- <div class="container">
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="exampleInputusername" class="form-label">Username</label>
+      <input
+        type="text"
+        class="form-control"
+        id="exampleInputusername"
+        formControlName="username"
+      >
+      <div class="form-text" *ngIf="userForm.get('username').touched">
+        <span *ngIf="userForm.get('username').hasError('required')">Username is required</span>
+        <span *ngIf="userForm.get('username').hasError('minlength')">Username must be at least 6 characters</span>
+        <span *ngIf="userForm.get('username').hasError('invalidNames')">Username is invalid</span>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Email address</label>
+      <input
+        type="email"
+        formControlName="email"
+        class="form-control"
+        id="exampleInputEmail1"
+        required
+      >
+      <div class="form-text" *ngIf="userForm.get('email').invalid && userForm.get('email').touched">Email is not valid</div>
+    </div>
+    <div class="mb-3">
+      <label for="number" class="form-label">Number</label>
+      <select class="form-select" formControlName="number" id="number" required>
+        <option value="">Select an option</option>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+      </select>
+      <div class="form-text" *ngIf="userForm.get('number').invalid && userForm.get('number').touched">Please select a valid option</div>
+    </div>
+    <div class="radio mt-3" *ngFor="let gender of genders">
+      <label for="gender{{gender}}">
+        <input type="radio" [value]="gender" formControlName="radio" id="gender{{gender}}">
+        {{ gender }}
+      </label>
+    </div>
+    <div class="mb-3">
+      <button type="submit" [disabled]="!userForm.valid" class="btn -->
